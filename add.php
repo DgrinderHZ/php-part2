@@ -3,6 +3,8 @@
 $errors = array('email'=> '',
                 'title'=>'',
                 'ingredients'=>'');
+$title = $email = $ingredients = '';
+
 if(isset($_POST['submit'])){
     // echo htmlspecialchars($_POST['email']);
     if(empty($_POST['email'])){
@@ -51,13 +53,13 @@ if(isset($_POST['submit'])){
     <h4 class="center">Add a Pizza</h4>
     <form action="add.php" class="white" method="post">
         <label for="email">Email:</label>
-        <input type="text" name="email">
+        <input type="text" name="email" value="<?php echo htmlspecialchars($email); ?>">
         <div class="red-text"> <?php echo $errors['email']; ?></div>
         <label for="title">Pizza title:</label>
-        <input type="text" name="title">
+        <input type="text" name="title" value="<?php echo htmlspecialchars($title); ?>">
         <div class="red-text"> <?php echo $errors['title']; ?></div>
         <label for="ingredients">Ingredients (comma separated):</label>
-        <input type="text" name="ingredients">
+        <input type="text" name="ingredients" value="<?php echo htmlspecialchars($ingredients); ?>">
         <div class="red-text"> <?php echo $errors['ingredients']; ?></div>
         <div class="center">
             <input type="submit" value="submit" name="submit" class="btn brand z-depth-0">
