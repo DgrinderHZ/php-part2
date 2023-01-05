@@ -1,18 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "username";
-$password = "password";
-$dbname = "pizzas";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-// echo "Connected successfully";
-
+require_once('config/db_connect.php');
 // enregistrer la requete dans une variable
 $sql = 'SELECT title, ingredients, id FROM pizzas';
 
@@ -27,9 +14,6 @@ mysqli_free_result($results);
 
 // fermer la connexion
 mysqli_close($conn);
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -55,7 +39,7 @@ mysqli_close($conn);
                         </ul>
                     </div>
                     <div class="card-action right-align">
-                        <a href="#" class="brand-text">Plus d'informations...</a>
+                        <a href="details.php?id=<?php echo htmlspecialchars($pizza['id']); ?>" class="brand-text">Plus d'informations...</a>
                     </div>
                 </div>
             </div>
